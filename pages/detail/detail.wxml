@@ -1,0 +1,98 @@
+<view style='padding:50rpx 0'>
+  <loading hidden="{{hidden}}">
+          加载中...
+      </loading>
+    <view bindtap="closeBgFn" class="posterBg">
+        <view class="posterBox" style='width:640rpx;height:auto;position:relative' wx:for="{{showData}}" wx:key="index" wx:for-item="item">
+            <image id="the-id" class="imgBg" style='width:640rpx;' mode="widthFix" src="{{item.backgroundPath}}"></image>
+            <image id="logo-id" class="imgBg" bindtap="ChooseLogoFn" wx:for="{{logoData}}" wx:key="index" wx:for-item="them"  style="position:absolute;left:{{them.left}};top:{{them.top}};width:{{them.width}};height:{{them.height}}" src="{{them.path}}"></image>
+            <image id="ths-id" style="width:640rpx;margin:0 auto;display:block" mode="widthFix"  src="{{erm}}"></image>
+            <text  wx:for="{{textsData}}"  wx:key="index" wx:for-item="cell" data-textid="{{index}}" data-text="{{cell.text}}"  style="left:{{cell.left}};top:{{cell.top}};color:{{cell.color}};font-size:{{cell.fontsize}};writing-mode:{{cell.writingMode}}">{{cell.text}}</text>
+        </view>
+    </view>
+    <view class="action">
+        <view bindtap="openModel">
+            <view class="icoBox">
+                <i class="iconfont icon-mobanguanli"></i>
+            </view>
+            <text>换个模板</text>
+        </view>
+        <view bindtap="openPhoto">
+            <view class="icoBox">
+                <i class="iconfont icon-tupian"></i>
+            </view>
+            <text>换张图片</text>
+        </view>
+        <view bindtap="openTxt">
+            <view class="icoBox">
+                <i class="iconfont icon-wenanbiaoti"></i>
+            </view>
+            <text>换个文案</text>
+        </view>
+    </view>
+    <button bindtap="saveFn" id="save" type="primary">完成制作，生成海报</button>
+    <!--换个模板-->
+    <view class="changeModel {{offA?'open':''}}">
+        <view class="tip" style="width:{{deviceWidth}}px">
+            <text>更换模板</text>
+            <span class="close" bindtap="closeModel">完成</span>
+        </view>
+        <scroll-view class="recommend_scroll" scroll-x="true">
+            <view class="recommend_hot_box {{modelIndex==index?'active':''}}" bindtap="changeModelFn" data-index="{{index}}" wx:for="{{modelList}}" wx:key="index" wx:for-item="item" data-modelid="{{item.id}}" >
+                <image class="recommend_hot_image" src="{{item.synthesisPath}}"></image>
+                <view class="activeBg">
+                    <i class="iconfont icon-dui"></i>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <!--更换图片-->
+    <view class="changePhoto {{offB?'open':''}}">
+        <view class="tip" style="width:{{deviceWidth}}px">
+            <text>更换图片</text>
+            <span class="close" bindtap="closePhoto">完成</span>
+        </view>
+        <view class="uploadPhoto" bindtap="ChooseImgFn" >
+            <i class="iconfont icon-xiangji"></i>
+            <text>拍照</text>
+        </view>
+        <scroll-view class="recommend_scroll recommend_photo" scroll-x="true">
+            <view class="recommend_hot_box {{photolIndex==index?'active':''}}" bindtap="changePhotoFn" data-index="{{index}}" data-img="{{item.backgroundPath}}" wx:for="{{photoList}}" wx:key="item.id" wx:for-item="item" >
+                <image class="recommend_hot_image" src="{{item.backgroundPath}}"></image>
+                <view class="activeBg">
+                    <i class="iconfont icon-dui"></i>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <!--换个文案-->
+    <view class="changeText {{offC?'open':''}}">
+        <view class="tip" style="width:{{deviceWidth}}px">
+            <text>更换文案</text>
+            <span class="close" bindtap="closeText">完成</span>
+        </view>
+        <scroll-view class="recommend_scroll" scroll-x="true">
+            <view class="recommend_hot_box recommend_Txt" bindtap="changeTextFn" data-index="{{index}}" wx:for="{{textsData}}" wx:key="item.id" wx:for-item="item" data-textid="{{item.id}}" data-text="{{item.text}}">
+                <text class="txt">{{item.text}}</text>
+            </view>
+        </scroll-view>
+    </view>
+    <!--编辑文案-->
+    <view class="changeEdit {{offD?'open':''}}">
+        <view class="tip" style="width:{{deviceWidth}}px">
+            <text>编辑内容</text>
+            <span class="close" bindtap="closeEdit">完成</span>
+        </view>
+        <input class="inputTxt" type="text" bindinput="getEditval" value="{{editVal}}"/>
+    </view>
+    <!--生成海报-->
+    <view class="groupbox" hidden="{{flag}}" >
+        <view class="groupimg">
+            <view style="position:fixed;top:999999999999999999999rpx;">
+                <canvas canvas-id="my_Canvas" style='width:{{canvasW}}px;height:{{canvasH}}px'/>
+            </view>
+            <image class="canvasImg" style='width:640rpx;max-height: 1000rpx' mode="widthFix" src="{{shareImgPath}}"></image>
+            <button id="saveS"  bindtap="saveShow" type="primary">保存分享图</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,99 @@
+/* pages/login/login.wxss */
+page{
+  background-color:#fff;
+}
+.login{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 100vh;
+}
+.login-bg{
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+}
+.container{
+	width: 100%;
+	height: auto;
+	margin-top: 0rpx;
+	padding: 150rpx 0 0 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  box-sizing:border-box;
+}
+.container .login-logo{
+	width: 134px;
+	height: 50px;
+	margin-bottom: 30rpx;
+}
+.container .form{
+	width: 560rpx;
+	height: auto;
+	position: relative;
+	font-size: 32rpx;
+}
+.container .form .input{
+	position: relative;
+	margin: 30rpx 0;
+}
+.container .form .input input{
+	width: 520rpx;
+	padding-left: 40rpx;
+	height: 100rpx;
+	color: #333;
+	background: #efefef;
+	border-radius: 100rpx;
+	font-size: 32rpx;
+}
+.getcode{
+	position: absolute;
+	right: 20rpx;
+	top:15rpx;
+	width: 220rpx;
+	height: 70rpx;
+	line-height: 70rpx;
+	z-index: 99999;
+	background: #44B09F;
+	color: #333;
+	border-radius: 20rpx;
+	font-size: 24rpx;
+	padding: 0;
+	border: none;
+}
+.agreement{
+	text-align: center;
+	font-size: 24rpx;
+	color:#333;
+}
+.agreement checkbox{
+  transform: scale(0.7);
+}
+.submit-btn{
+	width: 450rpx;
+	height: 90rpx;
+	line-height: 90rpx;
+	color: #fff;
+	margin: 60rpx auto 0;
+	border-radius: 50rpx;
+	background: #44B09F;
+}
+.dialogCnt{
+  position: fixed;
+  left:50%;
+  top:40%;
+  transform: translate(-50%,0%);
+  padding: 20rpx 40rpx;
+  color: #fff;
+  background: rgba(0, 0, 0,0.8);
+  border-radius: 10rpx;
+  overflow: hidden;
+  white-space:nowrap;
+  font-size: 28rpx;
+  z-index: 9999999999;
+}

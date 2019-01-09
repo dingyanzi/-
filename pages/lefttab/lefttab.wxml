@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="left_tabbar">
+    <scroll-view scroll-y="true" style="height:{{deviceHeight}}px;" class="left_tabbar_list">
+      <view bindtap="changeTab" data-index="{{index}}" data-id="{{item.id}}" class="left_tabbar_item {{activeIndex==index?'active':''}}" wx:for="{{tabs}}" wx:for-item="item" wx:key="item.id">
+        <view class="border"></view>
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </view>
+  <view class="right_content">
+    <scroll-view  scroll-y="true" lower-threshold="50" bindscrolltolower="getMore" style="height:{{deviceHeight}}px;" class="tab_panel">
+      <view class="rightBox">
+        <ul class="indexList">
+          <li bindtap="styleDetail" wx:key="item.id" data-typeid="{{item.templateType}}"  data-postid="{{item.id}}" data-index="{{index}}"  wx:for="{{contentList}}" wx:for-item="item" style="background-image:url('{{item.synthesisPath}}')" ></li>
+        </ul>
+      </view>
+      <view class="loading_box" hidden="{{!searchLoading}}">
+        <view class="loading3 loading3_1"></view>
+        <view class="loading3 loading3_2"></view>
+        <view class="loading3 loading3_3"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="groupbox" hidden="{{flag}}" >
+    <view class="groupimg">
+      <text hidden="{{iflogo}}">请先登录</text>
+      <button hidden="{{ifphone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权手机号</button>
+      <button hidden="{{ifshou}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >微信授权登录</button>
+    </view>
+  </view>
+
+</view>

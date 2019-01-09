@@ -1,0 +1,26 @@
+<!--pages/login/login.wxml-->
+<view hidden="{{isDialog}}" class="dialogCnt">{{dialogCnt}}</view>
+<view class="login">
+	
+	<view class="container">
+		<image class="login-logo" src="/image/logo.png"></image>
+		<view class="form">
+			<view class="input">
+				<input placeholder="请输入您的手机号" type='number' bindinput="mobileInput"/>
+	    </view>
+	    <view class="input">
+		     <input placeholder="请输入验证码" type='number' bindinput="codeInput"/>
+	    	<button disabled="{{isCode}}" bindtap="getCode" class="getcode">{{codetext}}</button>
+	    </view>
+	    <view class="agreement">
+		  	<label class="checkbox" >
+			  	<checkbox-group bindchange="checkboxChange">
+			   		<checkbox color="black" value="{{isChecked}}" checked="true"/>点击即表示您已阅读，并同意
+             <navigator style='display:inline' url='/pages/agreement/agreement'>《用户协议》</navigator>
+			  	</checkbox-group>
+		  	</label>
+		  </view>
+	    <button class="submit-btn" bindtap="loginFn">立即使用</button>
+	  </view>
+	</view>
+</view>
